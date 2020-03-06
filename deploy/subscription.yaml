@@ -1,0 +1,8 @@
+apiVersion: subscription.keptn.com/v1alpha1
+kind: KeptnSubscription
+metadata:
+  name: helm-subscription
+  namespace: keptn
+spec:
+  topics: 'sh.keptn.event.configuration.change,sh.keptn.events.deployment-finished'
+  listener: 'helm-service'

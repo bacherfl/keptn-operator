@@ -1,0 +1,7 @@
+apiVersion: subscription.keptn.com/v1alpha1
+kind: KeptnSubscription
+metadata:
+  name: example-keptnsubscription
+spec:
+  # Add fields here
+  size: 3

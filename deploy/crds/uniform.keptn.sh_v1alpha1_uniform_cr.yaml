@@ -1,0 +1,56 @@
+apiVersion: uniform.keptn.sh/v1alpha1
+kind: Uniform
+metadata:
+  name: example-uniform
+  namespace: keptn
+spec:
+  # Add fields here
+  services:
+    - name: wait-service
+      image: keptn/wait-service:latest
+      events:
+        - 'sh.keptn.events.deployment-finished'
+      env:
+        - name: WAIT_DURATION
+          value: '10m'
+
+    - name: remediation-service
+      image: keptn/remediation-service:latest
+      events:
+        - 'sh.keptn.event.problem.open'
+      env:
+        - name: ENVIRONMENT
+          value: 'production'
+
+    - name: gatekeeper-service
+      image: keptn/gatekeeper-service:latest
+      events:
+        - 'sh.keptn.events.evaluation-done'
+      env:
+        - name: ENVIRONMENT
+          value: 'production'
+
+    - name: helm-service
+      image: keptn/helm-service:latest
+      events:
+        - 'sh.keptn.event.configuration.change'
+        - 'sh.keptn.internal.event.service.create'
+      env:
+        - name: API
+          value: 'ws://api.keptn.svc.cluster.local'
+        - name: ENVIRONMENT
+          value: 'production'
+        - name: PRE_WORKFLOW_ENGINE
+          value: 'true'
+        - name: CANARY
+          value: 'deployment'
+
+    - name: jmeter-service
+      image: keptn/jmeter-service:latest
+      events:
+        - 'sh.keptn.events.deployment-finished'
+      env:
+        - name: ENVIRONMENT
+          value: 'production'
+
+

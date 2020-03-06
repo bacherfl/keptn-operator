@@ -1,0 +1,16 @@
+apiVersion: uniform.keptn.sh/v1alpha1
+kind: Uniform
+metadata:
+  name: example-uniform
+  namespace: keptn
+spec:
+  # Add fields here
+  services:
+    - name: dynatrace-sli-service
+      image: keptncontrib/dynatrace-sli-service:latest
+      events:
+        - 'sh.keptn.internal.event.get-sli'
+
+
+
+
